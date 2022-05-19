@@ -15,8 +15,9 @@ jobs:
         node-version: [16.x]
       
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v3
+
       - name: use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -25,6 +26,7 @@ jobs:
         - run: npm ci
         - run: npm run build --if-present
         - run: npm test
+        
       - name: Login to Container registry
         uses: docker/login-action@v2
         with:
